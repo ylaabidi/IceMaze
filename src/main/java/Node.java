@@ -16,7 +16,6 @@ public class Node {
 
 
     public static int[] nextCoord(int x, int y, Direction d){
-        int[] a = new int[2];
 
         switch(d){
             case Up -> y-=1;

@@ -1,0 +1,109 @@
+Exercice original : https://open.kattis.com/problems/pokemon
+
+Le labyrinthe
+La Reine Elsa d’Arendelle, ayant légèrement forcé sur la liqueur de sapin lors de sa visite à Pontarlier, a utilisé ses pouvoirs d’atmokinésie de façon incontrôlée. C’est à son éveil qu’elle s’est rendue compte qu’elle avait généré un labyrinthe de glace au beau milieu de la ville.
+
+Avec la panique et avec la gueule de conifère, que vous allez devoir aider la Reine Elsa à retrouver Olaf.
+L’exercice
+La carte
+La carte du labyrinthe de Pontarlier est de forme rectangulaire, chaque case ayant la même taille. On y trouve de la glace, des plaques de verglas, des stalagmites et avec de la chance, Olaf.
+
+Les dimensions de la carte sont définies dans le fichier d’entrée de l’exercice dès la première ligne de la façon suivante :
+
+{Largeur}{caractère espace}{Hauteur}
+
+Exemple pour une carte de 5 cases de largeur et 8 cases de hauteur :
+5 8
+
+Les dimensions sont supérieures ou égales à 3 et inférieures ou égales à 1024.
+
+Les lignes suivantes représentent les différentes cases de la carte et sont représentées de la façon suivante :
+le dièse, # représente un stalagmite
+le tiret bas, _ représente une plaque de verglas
+le point, . représente de la glace
+la lettre o, O représente Olaf, qui est assoupie sur de la glace
+
+Les bordures de la carte sont toujours composées de stalagmites.
+
+Ce qu’il faut réaliser
+Lire le fichier d’entrée
+Dans le fichier d’entrée, la première ligne comporte la taille de la carte, puis se suivent les différentes lignes décrivant chaque largeur, séparées par un saut de ligne (CR LF ou LF sont acceptés).
+
+Exemple :
+5 6
+#####
+#...#
+#_###
+#_O.#
+#__.#
+#####
+Calculer le nombre de déplacement nécessaire pour atteindre Olaf depuis chaque case
+
+Si la case de départ est un stalagmite, pas de chance, vous êtes empalés, vous pouvez utiliser la valeur -1.
+Si la case est recouverte de glace, le coût pour se déplacer depuis la case est de 1.
+Si vous êtes sur la case où se trouve Olaf, vous avez de la chance, vous pouvez utiliser la valeur 0.
+Si la case est recouverte par une plaque de verglas, vous poursuivez votre déplacement sur la case d’après, dans la même direction, jusqu’à rencontrer un obstacle ou bien de la glace. Le coût pour se déplacer depuis une à plusieurs plaques de verglas est de 1.
+Dans le cas où il serait impossible d’atteindre Olaf, utiliser la valeur -1.
+
+Exemple pour illustrer le résultat (et non, ce n’est pas au format de sortie ! ;)) :
+-1 	-1 	-1 	-1 	-1
+-1   4 	 5 	 6 	-1
+-1   4 	-1 	-1 	-1
+-1   1 	 0 	 1 	-1
+-1   3 	 1 	 2 	-1
+-1 	-1 	-1 	-1 	-1
+Ecrire le fichier de sortie
+Dans le fichier de sortie, le nombre de déplacements nécessaire depuis chaque case est simplement représenté sous la forme d’un entier, les valeurs sont espacées par le caractère espace.
+
+Une fois la largeur de la carte atteinte, on saute une ligne (CR LF ou LF sont acceptés).
+
+Exemple :
+-1 -1 -1 -1 -1
+-1 4 5 6 -1
+-1 4 -1 -1 -1
+-1 1 0 1 -1
+-1 3 1 2 -1
+-1 -1 -1 -1 -1
+
+Exemple
+Cas #1 :
+
+Entrée :
+
+5 6
+#####
+#...#
+#_###
+#_O.#
+#__.#
+#####
+
+Sortie :
+
+-1 -1 -1 -1 -1
+-1 4 5 6 -1
+-1 4 -1 -1 -1
+-1 1 0 1 -1
+-1 3 1 2 -1
+-1 -1 -1 -1 -1
+
+Cas #2 :
+
+Entrée :
+
+5 6
+#####
+##__#
+##__#
+##M_#
+##_##
+#####
+
+Sortie :
+
+-1 -1 -1 -1 -1
+-1 -1 1 2 -1
+-1 -1 1 2 -1
+-1 -1 0 1 -1
+-1 -1 1 -1 -1
+-1 -1 -1 -1 -1
